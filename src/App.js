@@ -1,25 +1,22 @@
 import React from "react";
 import 'rsuite/dist/rsuite.min.css';
 import './styles/main.scss';
-
+import { Switch } from "react-router";
+import SignIn from "./pages/Signin";
+import PrivateRoutes from "./components/PrivateRoutes";
+import Home from "./pages/Home";
+import PublicRoutes from "./components/PublicRoutes";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Switch>
+      <PublicRoutes path="/signin">
+        <SignIn/>
+      </PublicRoutes>
+      <PrivateRoutes path="/">
+        <Home/>
+      </PrivateRoutes>
+    </Switch>
   );
 }
 
