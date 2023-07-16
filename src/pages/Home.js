@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Homw=()=>{
+const Home=()=>{
     return (
         <div>
             Home
