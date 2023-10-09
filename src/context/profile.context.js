@@ -1,7 +1,7 @@
 import React, { createContext, useContext, useEffect, useState } from "react";
 import { auth,database } from "../misc/firebase";
 
-const ProfileContext=createContext(false)
+const ProfileContext=createContext()
 
 export const ProfileProvider=({children})=>{
     const [profile,setProfile]=useState(null)
@@ -37,9 +37,11 @@ export const ProfileProvider=({children})=>{
                 userRef.off()
             }    
         }
-    },[])
+    }, [])
     return <ProfileContext.Provider value={{isLoading,profile}}>
         {children}
     </ProfileContext.Provider>
 }
-export const useProfile=()=>useContext(ProfileContext)
+export const useProfile=()=>{
+    return useContext(ProfileContext)
+}
