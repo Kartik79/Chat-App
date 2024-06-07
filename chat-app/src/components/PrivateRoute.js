@@ -1,5 +1,5 @@
 import React from 'react';
-import { Redirect, Route } from 'react-router';
+import { Redirect, Route } from 'react-router-dom';
 import { Container, Loader } from 'rsuite';
 import { useProfile } from '../context/profile.context';
 
@@ -20,6 +20,5 @@ function PrivateRoute({ children, ...routeProps }) {
 
   return <Route {...routeProps}>{children}</Route>;
 }
-
 
 export default PrivateRoute;

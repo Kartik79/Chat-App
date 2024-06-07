@@ -1,6 +1,6 @@
 import React from 'react';
 import firebase from 'firebase/compat/app';
-import { Container, Grid, Row, Panel, Col, Button} from 'rsuite';
+import { Container, Grid, Row, Panel, Col, Button, Alert, Icon} from 'rsuite';
 import { auth, database } from '../misc/firebase';
 
 function SignIn() {
@@ -14,9 +14,9 @@ function SignIn() {
               createdAt: firebase.database.ServerValue.TIMESTAMP,
             });
           }
-    
+          Alert.success('Signed in', 4000);
         } catch (err) {
-          console.log(err);
+          Alert.error(err.message, 4000);
         }
       };
     
@@ -41,11 +41,11 @@ function SignIn() {
     
                   <div className="mt-3">
                     <Button block color="blue" >
-                      Continue with Facebook
+                    <Icon icon="facebook" />Continue with Facebook
                     </Button>
     
                     <Button block color="green" onClick={onGoogleSignIn}>
-                       Continue with Google
+                    <Icon icon="google" />Continue with Google
                     </Button>
                   </div>
                 </Panel>

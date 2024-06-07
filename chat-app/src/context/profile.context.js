@@ -1,4 +1,4 @@
-import React, { createContext, useState, useContext, useEffect, useMemo } from 'react';
+import React, { createContext, useState, useContext, useEffect } from 'react';
 import { auth, database } from '../misc/firebase';
 
 const ProfileContext = createContext();
@@ -45,10 +45,9 @@ export function ProfileProvider({ children }) {
     };
   }, []);
 
-  const value = useMemo(() => ({ isLoading, profile }), [isLoading, profile]);
-
   return (
-    <ProfileContext.Provider value={value}>
+    // eslint-disable-next-line react/jsx-no-constructed-context-values
+    <ProfileContext.Provider value={{ isLoading, profile }}>
       {children}
     </ProfileContext.Provider>
   );
