@@ -20,9 +20,9 @@ function SignIn() {
         }
       };
     
-    //   const onFacebookSignIn = () => {
-    //     signInWithProvider(new firebase.auth.FacebookAuthProvider());
-    //   };
+      const onFacebookSignIn = () => {
+        signInWithProvider(new firebase.auth.FacebookAuthProvider());
+      };
     
       const onGoogleSignIn = () => {
         signInWithProvider(new firebase.auth.GoogleAuthProvider());
@@ -40,7 +40,7 @@ function SignIn() {
                   </div>
     
                   <div className="mt-3">
-                    <Button block color="blue" >
+                    <Button block color="blue" onClick={onFacebookSignIn}>
                     <Icon icon="facebook" />Continue with Facebook
                     </Button>
     
