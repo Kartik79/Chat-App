@@ -4,9 +4,11 @@ import { useProfile } from '../../context/profile.context';
 import EditableInput from '../EditableInput';
 import { database } from '../../misc/firebase';
 import ProviderBlock from './ProviderBlock';
+import AvatarUploadBtn from './AvatarUploadBtn';
 
 function Dashboard({ onSignOut }) {
   const { profile } = useProfile();
+
   const onSave = async newData => {
     const userNicknameRef = database
       .ref(`/profiles/${profile.uid}`)
@@ -20,6 +22,7 @@ function Dashboard({ onSignOut }) {
       Alert.error(err.message, 4000);
     }
   };
+
   return (
     <>
       <Drawer.Header>
@@ -36,6 +39,7 @@ function Dashboard({ onSignOut }) {
           onSave={onSave}
           label={<h6 className="mb-2">Nickname</h6>}
         />
+        <AvatarUploadBtn />
       </Drawer.Body>
 
       <Drawer.Footer>
