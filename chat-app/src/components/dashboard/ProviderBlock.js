@@ -1,17 +1,26 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Tag, Icon, Button, Alert } from 'rsuite';
 import firebase from 'firebase/compat/app';
 import { auth } from '../../misc/firebase';
 
 function ProviderBlock() {
   const [isConnected, setIsConnected] = useState({
-    'google.com': auth.currentUser.providerData.some(
-      data => data.providerId === 'google.com'
-    ),
-    'facebook.com': auth.currentUser.providerData.some(
-      data => data.providerId === 'facebook.com'
-    ),
+    'google.com': false,
+    'facebook.com': false,
   });
+
+  useEffect(() => {
+    if (auth.currentUser) {
+      setIsConnected({
+        'google.com': auth.currentUser.providerData.some(
+          data => data.providerId === 'google.com'
+        ),
+        'facebook.com': auth.currentUser.providerData.some(
+          data => data.providerId === 'facebook.com'
+        ),
+      });
+    }
+  }, []);
 
   const updateIsConnected = (providerId, value) => {
     setIsConnected(p => {
@@ -49,7 +58,7 @@ function ProviderBlock() {
       Alert.info(`Linked to ${provider.providerId}`, 4000);
       updateIsConnected(provider.providerId, true);
     } catch (err) {
-      Alert.error(err.message, 400);
+      Alert.error(err.message, 4000);
     }
   };
 
@@ -59,6 +68,10 @@ function ProviderBlock() {
   const linkGoogle = () => {
     link(new firebase.auth.GoogleAuthProvider());
   };
+
+  if (!auth.currentUser) {
+    return <div>Loading...</div>;
+  }
 
   return (
     <div>
