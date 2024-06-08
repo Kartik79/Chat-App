@@ -1,4 +1,3 @@
-
 import React, { useState, useCallback } from 'react';
 import { InputGroup, Input, Icon, Alert } from 'rsuite';
 import firebase from 'firebase/compat/app';

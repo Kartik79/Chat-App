@@ -5,7 +5,7 @@ function EditableInput({
   initialValue,
   onSave,
   label = null,
-  placeholder = 'Write your value',
+  placeholder = 'Write your nickname',
   emptyMsg = 'Input is empty',
   ...inputProps
 }) {
