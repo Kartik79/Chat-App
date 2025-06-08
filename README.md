@@ -24,5 +24,5 @@ A real-time public chat board built with **Node.js**, **Express**, and **Socket.
 1. **Clone the repository:**
 
 ```bash
-git clone https://github.com/your-username/chat-app.git
+git clone https://github.com/Kartik79/chat-app.git
 cd chat-app
